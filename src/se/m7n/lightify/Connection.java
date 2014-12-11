@@ -272,7 +272,6 @@ public class Connection
 
             // Format: <H16s
             int idx = payload.getShort();
-            // FIXME maybe create new bytebuffer without idx?
             CharBuffer nameBuf = getCharset().decode(payload);
             String name = nameBuf.toString().trim();
 
@@ -443,7 +442,6 @@ public class Connection
             int pos = 11 + i * 42;
             ByteBuffer payload = byteBufferWrap(data.array(), pos, 42);
 
-            // FIXME can't use capacity 42 != 137
             mLogger.info(i + " " + pos + " " + payload.limit());
             // Format: <HQ16s16s
             int a = payload.getShort();
